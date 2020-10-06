@@ -1,0 +1,102 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Compact Academic CV
+% Structural Definitions
+% Version 1.0 (6/7/2019)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Authors:
+% Dario Taraborelli (http://nitens.org/taraborelli/home)
+% Vel (vel@LaTeXTemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	REQUIRED PACKAGES AND MISC CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+\hbadness=99999 % A parameter that tells TeX at what point to report badness errors
+\usepackage{graphicx} % Required for including images
+\setlength{\parindent}{0pt} % Stop paragraph indentation
+\usepackage{comment} % allows commenting 
+\usepackage{xcolor} % allows coloring 
+
+%----------------------------------------------------------------------------------------
+%	MARGINS
+%----------------------------------------------------------------------------------------
+
+\usepackage{geometry} % Required for adjusting page dimensions and margins
+
+\geometry{
+	paper=letterpaper, % Paper size, change to letterpaper for US letter size
+	top=3.25cm, % Top margin
+	bottom=4cm, % Bottom margin
+	left=3.5cm, % Left margin
+	right=3.5cm, % Right margin
+	headheight=0.75cm, % Header height
+	footskip=1cm, % Space from the bottom margin to the baseline of the footer
+	headsep=0.75cm, % Space from the top margin to the baseline of the header
+	%showframe, % Uncomment to show how the type block is set on the page
+}
+
+%----------------------------------------------------------------------------------------
+%	FONTS
+%----------------------------------------------------------------------------------------
+
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+
+%\usepackage[semibold]{ebgaramond} % Use the EB Garamond font with a reduced bold weight
+%\usepackage{CormorantGaramond} %https://tug.org/FontCatalogue/cormorantgaramond/
+
+%----------------------------------------------------------------------------------------
+%	SECTION STYLING
+%----------------------------------------------------------------------------------------
+
+\usepackage{sectsty} % Allows changing the font options for sections in a document
+
+\usepackage[fixed]{fontawesome5}
+%icons for contact info
+
+
+\sectionfont{\scshape\fontsize{15pt}{18pt}\selectfont} % Set font options for sections
+\subsectionfont{\mdseries\scshape\fontsize{13pt}{16pt}} % Set font options for sub sections
+\subsubsectionfont{\mdseries\upshape\bfseries\normalsize} % Set font options for sub sub sections
+
+%----------------------------------------------------------------------------------------
+%	MARGIN YEARS
+%----------------------------------------------------------------------------------------
+
+\usepackage{marginnote} % Required to output text in the margin
+
+\newcommand{\years}[1]{\marginnote{\scriptsize #1}} % New command for adding years to the margin
+\renewcommand*{\raggedleftmarginnote}{} % Left-align the years in the margin
+\setlength{\marginparsep}{-8pt} % Move the margin content closer to the text
+\reversemarginpar % Margin text to be output into the left margin instead of the default right margin
+
+%----------------------------------------------------------------------------------------
+%	COLOURS
+%----------------------------------------------------------------------------------------
+
+%\usepackage[usenames, dvipsnames]{xcolor} % Required for specifying colours by name
+
+\newcommand{\desc}[1]{\textcolor{gray}{\textit{#1}}}
+
+
+%----------------------------------------------------------------------------------------
+%	LINKS
+%----------------------------------------------------------------------------------------
+
+\usepackage[bookmarks, colorlinks, breaklinks]{hyperref} % Required for links
+
+% Set link colours
+\hypersetup{
+    colorlinks=true,
+	citecolor=black,
+	filecolor=black,
+	urlcolor=black
+}
+
