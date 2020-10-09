@@ -14,25 +14,20 @@ jobs:
     - name: Check pdf file
       run: |
         file cv.pdf | grep -q ' PDF '
-    - name: Upload cv.pdf
-      run: |
-        # configure git
-        git config --global user.name "kelseygonzalez"
-        git config --global user.email "kelseygonzalez@email.arizona.edu"
 
-        # setup ssh
-        mkdir ~/.ssh
-        chmod 700 ~/.ssh
-        echo "$DEPLOY_KEY" > ~/.ssh/id_ed25519
-        chmod 600 ~/.ssh/id_ed25519
-        git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 
-        git clone --depth=1 git@github.com:kelseygonzalez/website.git "$GITHUB_WORKSPACE/website"
-        cp -f cv.pdf "$GITHUB_WORKSPACE/website/static/files/cv.pdf"
-        cd "$GITHUB_WORKSPACE/website"
-        git add file/cv.pdf
-        git commit -m "[github actions] update cv"
-        git push
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Pushes test file
+      uses: dmnemec/copy_file_to_another_repo_action@v1.0.4
       env:
-        DEPLOY_KEY: ${{ secrets.SECRET_TOKEN }}
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: 'cv.pdf'
+        destination_repo: 'kelseygonzalez/website'
+        destination_folder: 'static/files'
+        user_email: 'kelseygonzalez@email.arizona.edu'
+        user_name: 'kelseygonzalez'
+
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
