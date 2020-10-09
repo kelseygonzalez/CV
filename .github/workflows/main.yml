@@ -17,14 +17,16 @@ jobs:
     - name: Upload cv.pdf
       run: |
         # configure git
-        git config --global user.name "Kelsey Gonzalez"
+        git config --global user.name "kelseygonzalez"
         git config --global user.email "kelseygonzalez@email.arizona.edu"
+
         # setup ssh
         mkdir ~/.ssh
         chmod 700 ~/.ssh
         echo "$DEPLOY_KEY" > ~/.ssh/id_ed25519
         chmod 600 ~/.ssh/id_ed25519
         git config --global core.sshCommand "ssh -i ~/.ssh/id_ed25519 -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
+
         git clone --depth=1 git@github.com:kelseygonzalez/website.git "$GITHUB_WORKSPACE/website"
         cp -f cv.pdf "$GITHUB_WORKSPACE/website/static/files/cv.pdf"
         cd "$GITHUB_WORKSPACE/website"
@@ -32,5 +34,5 @@ jobs:
         git commit -m "[github actions] update cv"
         git push
       env:
-        DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
+        DEPLOY_KEY: ${{ secrets.SECRET_TOKEN }}
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
